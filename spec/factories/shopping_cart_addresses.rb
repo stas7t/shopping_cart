@@ -5,8 +5,8 @@ FactoryGirl.define do
     address "MyString"
     city "MyString"
     country "MyString"
-    zip "MyString"
-    phone "MyString"
-    type ""
+    zip "12345"
+    phone "+15555555555"
+    address_type { %w[Billing Shipping].sample }
   end
 end

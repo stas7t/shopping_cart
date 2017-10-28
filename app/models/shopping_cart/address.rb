@@ -1,7 +1,7 @@
 module ShoppingCart
   class Address < ApplicationRecord
-    belongs_to :user, optional: true
-    belongs_to :order, optional: true
+    belongs_to :user, optional: true, class_name: 'User'
+    belongs_to :order, optional: true, class_name: 'ShoppingCart::Order'
 
     validates :first_name, :last_name, :city, :country,
               presence: true,
@@ -28,8 +28,8 @@ module ShoppingCart
                         message: 'Consist of 0-9 only no special symbols' },
               length: { maximum: 15 }
 
-    scope :shipping, -> { where(type: 'Shipping') }
-    scope :billing,  -> { where(type: 'Billing') }
+    scope :shipping, -> { where(address_type: 'Shipping') }
+    scope :billing,  -> { where(address_type: 'Billing') }
 
     def country_name
       country_full = ISO3166::Country[country]

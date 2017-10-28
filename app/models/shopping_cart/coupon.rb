@@ -1,6 +1,6 @@
 module ShoppingCart
   class Coupon < ApplicationRecord
-    belongs_to :order, optional: true
+    belongs_to :order, optional: true, class_name: 'ShoppingCart::Order'
 
     before_create :activate
 

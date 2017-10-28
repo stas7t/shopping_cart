@@ -8,7 +8,7 @@ class CreateShoppingCartAddresses < ActiveRecord::Migration[5.1]
       t.string :country
       t.string :zip
       t.string :phone
-      t.string :type
+      t.string :address_type
 
       t.timestamps
     end

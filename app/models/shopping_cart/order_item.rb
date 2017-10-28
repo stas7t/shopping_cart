@@ -1,7 +1,7 @@
 module ShoppingCart
   class OrderItem < ApplicationRecord
     belongs_to :product, class_name: 'Book'
-    belongs_to :order, optional: true
+    belongs_to :order, optional: true, class_name: 'ShoppingCart::Order'
 
     validates :quantity, presence: true, numericality: { only_integer: true,
                                                          greater_than: 0 }

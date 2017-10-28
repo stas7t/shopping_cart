@@ -22,9 +22,11 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '~> 5.1.4'
 
-  s.add_development_dependency 'capybara'
-  s.add_development_dependency 'factory_girl_rails'
-  s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'capybara', '~> 2.15', '>= 2.15.2'
+  s.add_development_dependency 'database_cleaner', '~> 1.6', '>= 1.6.1'
+  s.add_development_dependency 'factory_girl_rails', '4.8'
+  s.add_development_dependency 'rspec-rails', '~> 3.6', '>= 3.6.1'
+  s.add_development_dependency 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
   s.add_development_dependency 'sqlite3'
 
   s.test_files = Dir['spec/`/*']
