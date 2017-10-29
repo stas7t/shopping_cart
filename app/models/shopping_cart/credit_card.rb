@@ -1,6 +1,5 @@
 module ShoppingCart
   class CreditCard < ApplicationRecord
-    # belongs_to :user, optional: true
     has_many :orders, dependent: :destroy
 
     validates :number, :name_on_card, :month_year, :cvv, presence: true

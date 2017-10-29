@@ -1,6 +1,6 @@
 module ShoppingCart
   class Address < ApplicationRecord
-    belongs_to :user, optional: true, class_name: 'User'
+    belongs_to :user, optional: true, class_name: ShoppingCart.user_class.to_s
     belongs_to :order, optional: true, class_name: 'ShoppingCart::Order'
 
     validates :first_name, :last_name, :city, :country,

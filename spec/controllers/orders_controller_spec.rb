@@ -2,8 +2,9 @@ require 'spec_helper'
 
 module ShoppingCart
   RSpec.describe OrdersController, type: :controller do
+    routes { ShoppingCart::Engine.routes }
     let(:user) { FactoryGirl.create(:user) }
-    let(:order) { FactoryGirl.create(:order, :in_queue, user_id: user.id) }
+    let(:order) { FactoryGirl.create(:shopping_cart_order, :in_queue, user_id: user.id) }
     before { sign_in(user) }
 
     describe 'GET #index' do

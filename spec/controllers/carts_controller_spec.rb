@@ -17,7 +17,7 @@ module ShoppingCart
     end
 
     describe 'PUT #update' do
-      let!(:coupon) { FactoryGirl.create(:coupon) }
+      let!(:coupon) { FactoryGirl.create(:shopping_cart_coupon) }
 
       it 'set coupon' do
         expect(controller).to receive(:coupon).at_least(:once)

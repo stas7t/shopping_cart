@@ -1,3 +1,5 @@
+require_dependency 'shopping_cart/application_controller'
+
 module ShoppingCart
   class CheckoutController < ApplicationController
     include Wicked::Wizard

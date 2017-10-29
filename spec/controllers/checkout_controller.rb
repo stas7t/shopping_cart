@@ -2,11 +2,12 @@ require 'spec_helper'
 
 module ShoppingCart
   RSpec.describe CheckoutController, type: :controller do
+    routes { ShoppingCart::Engine.routes }
     let!(:user) { FactoryGirl.create(:user) }
     before { sign_in(user) }
 
     describe 'GET #show' do
-      let!(:order) { FactoryGirl.create(:order, :in_progress, :with_order_item, user_id: user.id) }
+      let!(:order) { FactoryGirl.create(:shopping_cart_order, :in_progress, :with_order_item, user_id: user.id) }
 
       describe 'addresses step' do
         before { get :show, params: { id: :addresses } }
@@ -26,7 +27,7 @@ module ShoppingCart
 
       describe 'delivery step' do
         before do
-          FactoryGirl.create(:address, order_id: order.id)
+          FactoryGirl.create(:shopping_cart_address, order_id: order.id)
           get :show, params: { id: :delivery }
         end
 
@@ -60,7 +61,7 @@ module ShoppingCart
       end
 
       describe 'confirm step' do
-        let(:credit_card) { FactoryGirl.create(:credit_card) }
+        let(:credit_card) { FactoryGirl.create(:shopping_cart_credit_card) }
         before do
           order.update(credit_card_id: credit_card.id)
           get :show, params: { id: :confirm }
@@ -95,11 +96,11 @@ module ShoppingCart
     end
 
     describe 'PUT #update' do
-      let!(:order) { FactoryGirl.create(:order, :in_progress, :with_order_item, user_id: user.id) }
+      let!(:order) { FactoryGirl.create(:shopping_cart_order, :in_progress, :with_order_item, user_id: user.id) }
 
       describe 'addresses' do
         before do
-          allow(AddressesForm).to receive(:new) { FactoryGirl.build(:address) }
+          allow(AddressesForm).to receive(:new) { FactoryGirl.build(:shopping_cart_address) }
           put :update, params: { id: :addresses, addresses_form: true }
         end
 
@@ -114,7 +115,7 @@ module ShoppingCart
 
       describe 'delivery' do
         before do
-          delivery = FactoryGirl.create(:delivery)
+          delivery = FactoryGirl.create(:shopping_cart_delivery)
           put :update, params: { id: :delivery, order: { delivery_id: delivery.id } }
         end
 
@@ -125,7 +126,7 @@ module ShoppingCart
 
       describe 'payment' do
         before do
-          credit_card_attributes = FactoryGirl.attributes_for(:credit_card)
+          credit_card_attributes = FactoryGirl.attributes_for(:shopping_cart_credit_card)
           put :update, params: { id: :payment, credit_card: credit_card_attributes }
         end
 

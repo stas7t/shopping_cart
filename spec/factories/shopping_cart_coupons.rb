@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :shopping_cart_coupon, class: 'ShoppingCart::Coupon' do
-    code "MyString"
-    discount "9.99"
-    active false
+    code 'TESTCOUPONE2017'
+    discount 9.99
   end
 end

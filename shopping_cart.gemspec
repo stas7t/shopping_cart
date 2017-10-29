@@ -22,12 +22,14 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'cancancan', '~> 2.0'
   s.add_dependency 'devise', '~> 4.3'
+  s.add_dependency 'haml-rails', '~> 1.0.0'
   s.add_dependency 'rails', '~> 5.1.2'
   s.add_dependency 'wicked', '~> 1.3', '>= 1.3.2'
 
   s.add_development_dependency 'capybara', '~> 2.15', '>= 2.15.2'
   s.add_development_dependency 'database_cleaner', '~> 1.6', '>= 1.6.1'
   s.add_development_dependency 'factory_girl_rails', '4.8'
+  s.add_development_dependency 'rails-controller-testing', '~> 1.0', '>= 1.0.2'
   s.add_development_dependency 'rspec-rails', '~> 3.6', '>= 3.6.1'
   s.add_development_dependency 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
   s.add_development_dependency 'sqlite3'

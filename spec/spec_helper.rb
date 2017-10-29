@@ -2,10 +2,12 @@ ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path('../dummy/config/environment.rb', __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
+require 'devise'
+# require 'rspec/autorun'
 require 'factory_girl_rails'
 require 'database_cleaner'
 require 'shoulda/matchers'
+require 'rails-controller-testing'
 
 Rails.backtrace_cleaner.remove_silencers!
 
@@ -17,6 +19,13 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = false
   config.order = 'random'
+
+  config.include Warden::Test::Helpers
+  config.after :each do
+    Warden.test_reset!
+  end
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
 
   config.before(:suite) do
     # This says that before the entire test suite runs, clear the test database out completely.
@@ -45,3 +54,5 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+Rails::Controller::Testing.install

@@ -2,6 +2,7 @@ require 'spec_helper'
 
 module ShoppingCart
   RSpec.describe AddressesController, type: :controller do
+    routes { ShoppingCart::Engine.routes }
     let!(:user) { FactoryGirl.create(:user) }
     before { sign_in(user) }
 
@@ -19,7 +20,7 @@ module ShoppingCart
     end
 
     describe 'PATCH #update' do
-      let(:address) { FactoryGirl.attributes_for(:address) }
+      let(:address) { FactoryGirl.attributes_for(:shopping_cart_address) }
       let(:addresses_aprams) { { billing: address, shipping: address } }
       before { patch :update, params: { addresses_form: addresses_aprams } }
 
