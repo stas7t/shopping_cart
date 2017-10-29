@@ -20,6 +20,8 @@ Gem::Specification.new do |s|
                 'Rakefile',
                 'README.md']
 
+  s.add_dependency 'cancancan', '~> 2.0'
+  s.add_dependency 'devise', '~> 4.3'
   s.add_dependency 'rails', '~> 5.1.2'
   s.add_dependency 'wicked', '~> 1.3', '>= 1.3.2'
 
