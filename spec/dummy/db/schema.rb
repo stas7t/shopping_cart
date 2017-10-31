@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029135705) do
+ActiveRecord::Schema.define(version: 20171031213943) do
 
   create_table "products", force: :cascade do |t|
     t.decimal "price"
@@ -27,10 +27,11 @@ ActiveRecord::Schema.define(version: 20171029135705) do
     t.string "zip"
     t.string "phone"
     t.string "address_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_shopping_cart_addresses_on_order_id"
   end
 
   create_table "shopping_cart_coupons", force: :cascade do |t|
@@ -60,21 +61,25 @@ ActiveRecord::Schema.define(version: 20171029135705) do
 
   create_table "shopping_cart_order_items", force: :cascade do |t|
     t.integer "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "product_id"
     t.integer "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_shopping_cart_order_items_on_order_id"
   end
 
   create_table "shopping_cart_orders", force: :cascade do |t|
     t.string "number"
     t.integer "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "coupon_id"
     t.integer "delivery_id"
     t.integer "credit_card_id"
-    t.integer "coupon_id"
-    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coupon_id"], name: "index_shopping_cart_orders_on_coupon_id"
+    t.index ["credit_card_id"], name: "index_shopping_cart_orders_on_credit_card_id"
+    t.index ["delivery_id"], name: "index_shopping_cart_orders_on_delivery_id"
   end
 
   create_table "users", force: :cascade do |t|

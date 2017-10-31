@@ -8,7 +8,7 @@ module ShoppingCart
       @order_item = OrderItem.create(order_item_params)
       order_item_ids << @order_item.id
 
-      redirect_back(fallback_location: cart_path)
+      redirect_back(fallback_location: main_app.root_path)
     end
 
     def update
@@ -16,7 +16,7 @@ module ShoppingCart
       @order_item.update_attributes(order_item_params)
       @order_items = OrderItem.where(id: order_item_ids)
 
-      redirect_back(fallback_location: cart_path)
+      redirect_back(fallback_location: main_app.root_path)
     end
 
     def destroy
@@ -24,7 +24,7 @@ module ShoppingCart
       @order_item.destroy
       order_item_ids.delete_if { |item_id| item_id == @order_item.id }
 
-      redirect_back(fallback_location: cart_path)
+      redirect_back(fallback_location: main_app.root_path)
     end
 
     private

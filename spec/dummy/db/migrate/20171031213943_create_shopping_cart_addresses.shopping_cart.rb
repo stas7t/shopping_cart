@@ -1,3 +1,4 @@
+# This migration comes from shopping_cart (originally 20171028171330)
 class CreateShoppingCartAddresses < ActiveRecord::Migration[5.1]
   def change
     create_table :shopping_cart_addresses do |t|
