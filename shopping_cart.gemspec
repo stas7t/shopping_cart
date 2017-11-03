@@ -21,9 +21,11 @@ Gem::Specification.new do |s|
                 'README.md']
 
   s.add_dependency 'cancancan', '~> 2.0'
+  s.add_dependency 'country_select', '~> 3.1', '>= 3.1.1'
   s.add_dependency 'devise', '~> 4.3'
   s.add_dependency 'haml-rails', '~> 1.0.0'
   s.add_dependency 'rails', '~> 5.1.2'
+  s.add_dependency 'simple_form', '~> 3.5'
   s.add_dependency 'wicked', '~> 1.3', '>= 1.3.2'
 
   s.add_development_dependency 'capybara', '~> 2.15', '>= 2.15.2'

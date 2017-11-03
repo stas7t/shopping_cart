@@ -28,8 +28,8 @@ module ShoppingCart
                         message: 'Consist of 0-9 only no special symbols' },
               length: { maximum: 15 }
 
-    scope :shipping, -> { where(address_type: 'Shipping') }
-    scope :billing,  -> { where(address_type: 'Billing') }
+    scope :shipping, -> { where(address_type: 'ShoppingCart::Shipping') }
+    scope :billing,  -> { where(address_type: 'ShoppingCart::Billing') }
 
     def country_name
       country_full = ISO3166::Country[country]

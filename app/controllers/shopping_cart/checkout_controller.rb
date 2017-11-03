@@ -58,7 +58,7 @@ module ShoppingCart
 
     def show_payment
       return jump_to(previous_step) unless current_order.delivery
-      @credit_card = current_order.credit_card || current_user.credit_card || CreditCard.new
+      @credit_card = current_order.credit_card || CreditCard.new
     end
 
     def show_confirm

@@ -6,8 +6,16 @@ module ShoppingCart
     validates :quantity, presence: true, numericality: { only_integer: true,
                                                          greater_than: 0 }
 
+    before_validation :set_product
+
     def total
       product.price * quantity
+    end
+
+    private
+
+    def set_product
+      self.product = ShoppingCart.product_class.find_or_create_by(id: product_id)
     end
   end
 end
