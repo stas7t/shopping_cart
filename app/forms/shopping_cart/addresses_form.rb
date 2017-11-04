@@ -22,13 +22,13 @@ module ShoppingCart
     end
 
     def billing
-      new_billing = @user.addresses.find_or_initialize_by(address_type: 'ShoppingCart::Billing')
+      new_billing = @user.addresses.find_or_initialize_by(address_type: 'Billing')
       new_billing.assign_attributes(params_for(:billing)) if save?
       @billing ||= new_billing
     end
 
     def shipping
-      new_shipping = @user.addresses.find_or_initialize_by(address_type: 'ShoppingCart::Shipping')
+      new_shipping = @user.addresses.find_or_initialize_by(address_type: 'Shipping')
       new_shipping.assign_attributes(params_for(:shipping)) if save?
       @shipping ||= new_shipping
     end

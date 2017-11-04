@@ -43,7 +43,7 @@ module ShoppingCart
     end
 
     def login
-      return jump_to(next_step) if user_signed_in?
+      return jump_to(next_step) if signed_in?
       cookies[:from_checkout] = { value: true, expires: 1.day.from_now }
     end
 

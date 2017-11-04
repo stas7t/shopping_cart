@@ -4,7 +4,7 @@ module ShoppingCart
   class CartsController < ApplicationController
     def show
       @order = Order.new(order_item_ids: session[:order_item_ids],
-                        coupon_id: session[:coupon_id])
+                         coupon_id: session[:coupon_id])
     end
 
     def update

@@ -11,5 +11,4 @@ module DeviseRequestSpecHelpers
     scope = Devise::Mapping.find_scope!(resource_or_scope)
     logout(scope)
   end
-
 end

@@ -8,7 +8,7 @@ module ShoppingCart
       before(:all) { FactoryGirl.create_list(:shopping_cart_address, 20) }
 
       describe 'billing' do
-        subject { Address.billing }
+        subject { ShoppingCart::Address.billing }
 
         it 'contain only one type of addresses' do
           expect(subject.map(&:address_type).uniq.size).to eq 1
@@ -20,7 +20,7 @@ module ShoppingCart
       end
 
       describe 'shipping' do
-        subject { Address.shipping }
+        subject { ShoppingCart::Address.shipping }
 
         it 'contain only one type of addresses' do
           expect(subject.map(&:address_type).uniq.size).to eq 1
