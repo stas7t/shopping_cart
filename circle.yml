@@ -1,0 +1,14 @@
+machine:
+  ruby:
+    version: 2.4.1
+database:
+  override:
+    - cp spec/dummy/config/database.ci.yml spec/dummy/config/database.yml
+    - bundle exec rake app:db:create --trace
+    - bundle exec rake app:db:schema:load --trace
+dependencies:
+  pre:
+    - gem install bundler
+test:
+  override:
+    - bundle exec rspec spec/ --format doc
