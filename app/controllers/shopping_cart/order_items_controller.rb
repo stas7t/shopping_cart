@@ -2,7 +2,6 @@ require_dependency 'shopping_cart/application_controller'
 
 module ShoppingCart
   class OrderItemsController < ApplicationController
-    # load_and_authorize_resource
 
     def create
       @order_item = OrderItem.create(order_item_params)
