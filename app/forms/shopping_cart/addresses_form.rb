@@ -2,7 +2,7 @@ module ShoppingCart
   class AddressesForm
     include ActiveModel::Model
 
-    attr_reader :params, :relation, :use_billing
+    attr_reader :params, :use_billing
 
     def initialize(params = false)
       @save = false
@@ -37,10 +37,6 @@ module ShoppingCart
 
     def user_id
       params.fetch(:user_id, false) || (params[:billing][:user_id] if nested?)
-    end
-
-    def order_id
-      params.fetch(:order_id, false) || (params[:billing][:order_id] if nested?)
     end
 
     def nested?
