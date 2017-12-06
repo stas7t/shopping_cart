@@ -4,11 +4,11 @@ module ShoppingCart
   class OrdersController < ApplicationController
     before_action :authenticate_user!
 
-    ORDER_FILTERS = { in_queue: 'Waiting for processing',
-                      in_delivery: 'In delivery',
-                      delivered: 'Delivered',
-                      canceled: 'Canceled',
-                      all: 'All' }.freeze
+    ORDER_FILTERS = { in_queue:    I18n.t(:order_in_queue),
+                      in_delivery: I18n.t(:order_in_delivery),
+                      delivered:   I18n.t(:order_delivered),
+                      canceled:    I18n.t(:order_canceled),
+                      all:         I18n.t(:order_all) }.freeze
 
     def index
       order_status = params[:order_status]
@@ -21,7 +21,7 @@ module ShoppingCart
                 else current_user.orders.placed
                 end
 
-      @active_filter = order_status ? ORDER_FILTERS[order_status.to_sym] : 'All'
+      @active_filter = order_status ? ORDER_FILTERS[order_status.to_sym] : I18n.t(:order_all)
     end
 
     def show
