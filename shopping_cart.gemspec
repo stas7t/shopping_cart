@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'haml-rails', '~> 1.0.0'
   s.add_dependency 'rails', '~> 5.1.2'
   s.add_dependency 'rails-i18n', '~> 5.0.0'
-  s.add_dependency 'simple_form', '~> 3.5'
+  s.add_dependency 'simple_form', '>= 3.5', '< 6.0'
   s.add_dependency 'wicked', '~> 1.3', '>= 1.3.2'
 
   s.add_development_dependency 'capybara', '~> 2.15', '>= 2.15.2'
